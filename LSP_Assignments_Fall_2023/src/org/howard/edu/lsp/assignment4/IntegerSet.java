@@ -63,12 +63,18 @@ public class IntegerSet {
 	};
 	
 	//returns largest item in the set
-	public int largest() {
+	public int largest() throws IntegerSetException {
+		if (set.isEmpty()) {
+            throw new IntegerSetException("Set is empty. Cannot find the largest item.");
+        }
 		return Collections.max(set);
 	};
 	
 	//returns the smallest item in the set
-	public int smallest() {
+	public int smallest() throws IntegerSetException {
+		if (set.isEmpty()) {
+            throw new IntegerSetException("Set is empty. Cannot find the largest item.");
+        }
 		return Collections.min(set);
 	};
 	
@@ -141,3 +147,17 @@ public class IntegerSet {
 	
 
 }
+
+class IntegerSetException extends Exception
+{
+      private static final long serialVersionUID = 1L;
+
+	// Parameterless Constructor
+      public IntegerSetException() {}
+
+      // Constructor that accepts a message
+      public IntegerSetException(String message)
+      {
+         super(message);
+      }
+ }
