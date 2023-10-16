@@ -3,7 +3,7 @@ package org.howard.edu.lsp.assignment4;
 
 public class Driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IntegerSetException {
 		// TODO Auto-generated method stub
 		IntegerSet set1 = new IntegerSet();
 		set1.add(1);
@@ -53,6 +53,9 @@ public class Driver {
 		set1.complement(set2);
 		System.out.println("Result of complement of set1 and set2: "+set1.toString());
 		System.out.println("Is set2 empty? "+set2.isEmpty());
+		set2.clear();
+		System.out.println("Result of largest item in set2 after set2 is cleared: "+set2.largest());
+		
 	}
 
 }
