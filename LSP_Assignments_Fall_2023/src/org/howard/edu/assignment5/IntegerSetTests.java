@@ -1,16 +1,14 @@
 package org.howard.edu.assignment5;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.howard.edu.assignment5.IntegerSet;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 public class IntegerSetTests {
 	private IntegerSet integerSet;
@@ -149,6 +147,30 @@ public class IntegerSetTests {
 		assertTrue(integerSet.isEmpty());
 	}
 	
+	@Test
+	@DisplayName("test toString")
+	public void testString() {
+		integerSet.add(5);
+        integerSet.add(10);
+        integerSet.add(15);
+        assertEquals("[5, 10, 15]",integerSet.toString());
+	}
+	
+	@Test
+	@DisplayName("test largest_IntegerSetException")
+	public void testLargestIntegerSetException() {
+		Throwable exception = assertThrows(IntegerSetException.class, () -> integerSet.largest());
+		assertEquals("Set is empty. Cannot find the largest item.", exception.getMessage());
+		assertNotNull(exception.getMessage());
+	}
+	
+	@Test
+	@DisplayName("test smallest_IntegerSetException")
+	public void testSmallestIntegerSetException() {
+		Throwable exception = assertThrows(IntegerSetException.class, () -> integerSet.smallest());
+		assertEquals("Set is empty. Cannot find the smallest item.", exception.getMessage());
+		assertNotNull(exception.getMessage());
+	}
 	
 	
 	

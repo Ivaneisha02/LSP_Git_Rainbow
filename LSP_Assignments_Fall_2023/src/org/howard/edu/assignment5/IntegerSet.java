@@ -73,7 +73,7 @@ public class IntegerSet {
 	//returns the smallest item in the set
 	public int smallest() throws IntegerSetException {
 		if (set.isEmpty()) {
-            throw new IntegerSetException("Set is empty. Cannot find the largest item.");
+            throw new IntegerSetException("Set is empty. Cannot find the smallest item.");
         }
 		return Collections.min(set);
 	};
