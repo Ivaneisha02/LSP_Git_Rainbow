@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 
-public class IntegerSetTests {
+public class IntegerSetTest {
 	private IntegerSet integerSet;
 	
 	@BeforeEach
