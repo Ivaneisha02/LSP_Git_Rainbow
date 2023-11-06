@@ -32,6 +32,7 @@ public class IntegerSetTest {
 		integerSet.add(2);
 		integerSet.add(5);
 		integerSet.add(9);
+		integerSet.add(2);
 		assertEquals(integerSet.length(),3);
 	}
 	
@@ -78,7 +79,10 @@ public class IntegerSetTest {
 	@DisplayName("test add")
 	public void testAdd() {
 		integerSet.add(8);
+		integerSet.add(3);
 		assertTrue(integerSet.contains(8));
+		assertTrue(integerSet.contains(3));
+		assertEquals(integerSet.length(),2);
 	}
 	
 	
@@ -89,6 +93,7 @@ public class IntegerSetTest {
 		integerSet.add(89);
 		integerSet.remove(9);
 		assertFalse(integerSet.contains(9));
+		assertEquals(integerSet.length(),1);
 	}
 	
 	@Test
@@ -100,6 +105,9 @@ public class IntegerSetTest {
 		integerSet.add(30);
 		integerSet.union(set2);
 		assertEquals(integerSet.length(),3);
+		assertTrue(integerSet.contains(9));
+		assertTrue(integerSet.contains(8));
+		assertTrue(integerSet.contains(30));
 	}
 	
 	@Test
@@ -112,6 +120,7 @@ public class IntegerSetTest {
 		integerSet.add(2);
 		integerSet.intersect(set2);
 		assertEquals(integerSet.length(),1);
+		assertTrue(integerSet.contains(9));
 	}
 	
 	@Test
@@ -124,6 +133,7 @@ public class IntegerSetTest {
 		integerSet.add(4);
 		integerSet.diff(set2);
 		assertEquals(integerSet.length(),1);
+		assertTrue(integerSet.contains(4));
 	}
 	
 	@Test
@@ -136,6 +146,7 @@ public class IntegerSetTest {
 		integerSet.add(4);
 		integerSet.complement(set2);
 		assertEquals(integerSet.length(),1);
+		assertTrue(integerSet.contains(3));
 	}
 	
 	@Test
