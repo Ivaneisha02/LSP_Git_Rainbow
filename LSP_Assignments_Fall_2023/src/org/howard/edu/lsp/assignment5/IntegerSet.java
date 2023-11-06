@@ -98,7 +98,6 @@ public class IntegerSet {
 	//set union
 	public void union(IntegerSet intSetb) {
 		set.addAll(intSetb.set);
-		Set<Integer> newset = new HashSet<Integer>(set);
 	}
 	
 	//set intersection
