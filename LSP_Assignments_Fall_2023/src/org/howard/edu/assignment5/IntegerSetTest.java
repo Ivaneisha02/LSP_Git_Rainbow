@@ -48,6 +48,18 @@ public class IntegerSetTest {
 		assertTrue(integerSet.equals(integerSet2));
 		
 	}
+	
+	@Test
+	@DisplayName("test equals with nonequal set")
+	public void testEqualsNonEqual() {
+		IntegerSet integerSet2 = new IntegerSet();
+		integerSet2.add(43);
+		integerSet2.add(3);
+		integerSet2.add(65);
+		integerSet.add(3);
+		integerSet.add(65);
+		assertFalse(integerSet.equals(integerSet2));
+	}
 	@Test
 	@DisplayName("test contains")
 	public void testContains() {
@@ -55,6 +67,14 @@ public class IntegerSetTest {
 		integerSet.add(7);
 		assertTrue(integerSet.contains(9));
 		assertFalse(integerSet.contains(8));
+	}
+	
+	@Test
+	@DisplayName("test contains with nonpresent element")
+	public void testContainsNotPresent() {
+		integerSet.add(8);
+		integerSet.add(2);
+		assertFalse(integerSet.contains(6));
 	}
 	
 	@Test
@@ -85,6 +105,15 @@ public class IntegerSetTest {
 		assertEquals(integerSet.length(),2);
 	}
 	
+	@Test
+	@DisplayName("test add duplicates")
+	public void testAddDuplicate() {
+		integerSet.add(3);
+		integerSet.add(5);
+		integerSet.add(3);
+		integerSet.add(5);
+		assertEquals(integerSet.length(),2);
+	}
 	
 	@Test
 	@DisplayName("test remove")
@@ -96,6 +125,14 @@ public class IntegerSetTest {
 		assertEquals(integerSet.length(),1);
 	}
 	
+	@Test
+	@DisplayName("test remove nonpresent element")
+	public void testRemoveNotPresent() {
+		integerSet.add(9);
+		integerSet.add(6);
+		integerSet.remove(23);
+		assertEquals(integerSet.length(),2);
+	}
 	@Test
 	@DisplayName("test union")
 	public void testUnion() {
@@ -111,6 +148,16 @@ public class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("test union with empty set")
+	public void testUnionEmpty() {
+		IntegerSet set2 = new IntegerSet();
+		integerSet.add(30);
+		integerSet.union(set2);
+		assertEquals(integerSet.length(),1);
+		assertTrue(integerSet.contains(30));
+	}
+	
+	@Test
 	@DisplayName("test intersect")
 	public void testIntersect() {
 		IntegerSet set2 = new IntegerSet();
@@ -121,6 +168,18 @@ public class IntegerSetTest {
 		integerSet.intersect(set2);
 		assertEquals(integerSet.length(),1);
 		assertTrue(integerSet.contains(9));
+	}
+	
+	@Test
+	@DisplayName("test nonintersecting sets")
+	public void testNonIntersect() {
+		IntegerSet set2 = new IntegerSet();
+		set2.add(13);
+		set2.add(8);
+		integerSet.add(9);
+		integerSet.add(2);
+		integerSet.intersect(set2);
+		assertEquals(integerSet.length(),0);
 	}
 	
 	@Test
@@ -153,11 +212,17 @@ public class IntegerSetTest {
 	@DisplayName("test isEmpty")
 	public void testIsEmpty() {
 		integerSet.add(9);
-		assertFalse(integerSet.isEmpty());
 		integerSet.clear();
 		assertTrue(integerSet.isEmpty());
 	}
 	
+	@Test
+	@DisplayName("test not empty")
+	public void testNotEmpty() {
+		integerSet.add(7);
+		integerSet.add(89);
+		assertFalse(integerSet.isEmpty());
+	}
 	@Test
 	@DisplayName("test toString")
 	public void testString() {
