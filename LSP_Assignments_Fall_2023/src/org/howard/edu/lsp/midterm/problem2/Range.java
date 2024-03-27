@@ -1,40 +1,16 @@
-package org.howard.edu.lsp.midterm.problem2;
+package org.howard.edu.lsp.midterm.question2;
 
-public class Range {
+
+
+public interface Range {
 	
-	
-	private Integer start;
-	private Integer end;
-	
-	
-	public Range(Integer start,Integer end) {
-		this.start = start;
-		this.end = end;
-	}
-	
-	public boolean isValueInRange(Integer value) {
-		
-		if ((value >= this.start) && (value <= this.end)) {
-			return true;
-		}
-		return false;
-	};
-	
-	public boolean doRangesOverlap(Range otherRange) {
-		Range other = (Range) otherRange;
-		//if other start btw this start and end
-		// if other end btw this start and end
-		if ((other.start<=this.end) && (other.start>=this.start)) {
-			return true;
-		}
-		if ((other.end<=this.end) && (other.end>=this.start)) {
-			return true;
-		}
-		return false;
-		
-	}
-	
-	public Integer size() {
-		return (this.end - this.start);
-	}
+	// Returns true if v is ≥ lower bound and ≤ upper bound and false otherwise
+public boolean contains( int value ); 
+
+// Returns true if the receiver contains at least 
+// one value in common with other, and false otherwise
+public boolean overlaps( Range other );
+
+// // Returns the number of integers in the range
+public int size(); 
 }
