@@ -1,4 +1,4 @@
-package org.howard.edu.lsp.midterm.question2;
+package org.howard.edu.lsp.midterm.problem2;
 
 /**
  * This class represents a range of integers and implements the Range interface.
